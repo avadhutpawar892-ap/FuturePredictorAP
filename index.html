@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+<head> Avadhut pawar
+<title>Future Predictor AP</title>
+
+<style>
+*{
+    box-sizing:border-box;
+    font-family:Arial, sans-serif;
+}
+
+body{
+    margin:0;
+    background:linear-gradient(135deg,#0066ff,#00c6ff);
+}
+
+.header{
+    background:#003399;
+    color:white;
+    text-align:center;
+    padding:20px;
+    font-size:28px;
+    font-weight:bold;
+}
+
+.card{
+    width:90%;
+    max-width:400px;
+    background:white;
+    margin:30px auto;
+    padding:25px;
+    border-radius:20px;
+    box-shadow:0 5px 15px rgba(0,0,0,0.3);
+    text-align:center;
+}
+
+input, select, button{
+    width:100%;
+    padding:12px;
+    margin:8px 0;
+    border-radius:10px;
+    font-size:16px;
+}
+
+button{
+    background:#0066ff;
+    color:white;
+    border:none;
+    cursor:pointer;
+}
+
+button:hover{
+    background:#003399;
+}
+
+#result, #examResult{
+    margin-top:15px;
+    font-weight:bold;
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="header">
+🎯 Future Predictor 
+</div>
+
+<!-- MARKS PREDICTOR -->
+<div class="card">
+
+<h2>📊 Marks Predictor</h2>
+
+<input type="number" id="maths" placeholder="Maths Marks">
+<input type="number" id="science" placeholder="Science Marks">
+
+<select id="fav">
+<option value="">Select Subject</option>
+<option value="Maths">Maths</option>
+<option value="Biology">Biology</option>
+</select>
+
+<button onclick="predict()">Predict Result</button>
+
+<div id="result"></div>
+
+</div>
+
+<!-- EXAM PREDICTOR -->
+<div class="card">
+
+<h2>🎓 Exam Wise Predictor</h2>
+
+<select id="exam">
+<option value="">Choose Exam</option>
+<option value="JEE">JEE</option>
+<option value="NEET">NEET</option>
+<option value="CET">CET</option>
+<option value="CA">CA</option>
+<option value="UPSC">UPSC</option>
+</select>
+
+<button onclick="examPredict()">Check Prediction</button>
+
+<div id="examResult"></div>
+
+</div>
+
+<script>
+
+function predict(){
+
+let maths = Number(document.getElementById("maths").value);
+let science = Number(document.getElementById("science").value);
+let fav = document.getElementById("fav").value;
+
+let career = "";
+
+if(fav === "Maths" && maths >= 80){
+    career = "🚀 PCM + Engineering (JEE Path)";
+}
+else if(fav === "Biology" && science >= 80){
+    career = "🩺 PCB + Medical (NEET Path)";
+}
+else{
+    career = "📚 Explore Science/Commerce/Arts based on interest";
+}
+
+document.getElementById("result").innerHTML = career;
+}
+
+function examPredict(){
+
+let exam = document.getElementById("exam").value;
+
+let result = "";
+
+if(exam=="JEE"){
+result="🚀 Engineering Path: PCM strong preparation";
+}
+else if(exam=="NEET"){
+result="🩺 Medical Path: PCB strong preparation";
+}
+else if(exam=="CET"){
+result="📘 CET Path: MCQ practice daily";
+}
+else if(exam=="CA"){
+result="💼 Commerce Path: Accounts + Economics";
+}
+else if(exam=="UPSC"){
+result="🏛 GS + Reading + Practice";
+}
+else{
+result="⚠️ Select exam first";
+}
+
+document.getElementById("examResult").innerHTML = result;
+}
+
+</script>
+
+</body>
+</html>
